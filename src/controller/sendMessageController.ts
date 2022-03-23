@@ -1,9 +1,11 @@
+import "dotenv/config";
+import {Request, Response} from 'express';
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
-module.exports = {
-  async sendMessage(req, res) {
+export default {
+  async sendMessage(req: Request, res: Response) {
     const {message, number} = req.body;
   
     try {
